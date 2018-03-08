@@ -136,7 +136,7 @@ include("inc/header.php");
 						</fieldset>
 						<footer>
 							<button type="submit" class="btn btn-primary">
-								Sign in
+								Login
 							</button>
 						</footer>
 					</form>
