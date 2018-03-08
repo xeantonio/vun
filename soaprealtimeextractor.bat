@@ -1,0 +1,1 @@
+c:\php\php.exe "C:\Program Files (x86)\Apache Software Foundation\Apache2.2\htdocs\vun\soapclient.php" > "C:\Program Files (x86)\Apache Software Foundation\Apache2.2\htdocs\vun\soaplog.txt"

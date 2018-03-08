@@ -1,0 +1,7 @@
+
+Fatal error: Uncaught SoapFault exception: [WSDL] SOAP-ERROR: Parsing WSDL: Couldn't load from 'http://190.210.215.9:8081/topaz/gdeopenapi/services/GdeWsOpenAPI?wsdl' : failed to load external entity "http://190.210.215.9:8081/topaz/gdeopenapi/services/GdeWsOpenAPI?wsdl"
+ in C:\Program Files (x86)\Apache Software Foundation\Apache2.2\htdocs\vun\soapclient.php:24
+Stack trace:
+#0 C:\Program Files (x86)\Apache Software Foundation\Apache2.2\htdocs\vun\soapclient.php(24): SoapClient->SoapClient('http://190.210....')
+#1 {main}
+  thrown in C:\Program Files (x86)\Apache Software Foundation\Apache2.2\htdocs\vun\soapclient.php on line 24

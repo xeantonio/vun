@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
+
+		<title> SmartAdmin </title>
+		<meta name="description" content="">
+		<meta name="author" content="">
+			
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<!-- Basic Styles -->
+		<link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="css/font-awesome.min.css">
+
+		<!-- SmartAdmin Styles : Caution! DO NOT change the order -->
+		<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-production-plugins.min.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-production.min.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-skins.min.css">
+
+		<!-- SmartAdmin RTL Support  -->
+		<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-rtl.min.css">
+
+		<!-- We recommend you use "your_style.css" to override SmartAdmin
+		     specific styles this will also ensure you retrain your customization with each SmartAdmin update.
+		<link rel="stylesheet" type="text/css" media="screen" href="css/your_style.css"> -->
+
+		<!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
+		<link rel="stylesheet" type="text/css" media="screen" href="css/demo.min.css">
+
+		<!-- FAVICONS -->
+		<link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="img/favicon/favicon.ico" type="image/x-icon">
+
+		<!-- GOOGLE FONT -->
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
+
+		<!-- Specifying a Webpage Icon for Web Clip 
+			 Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html -->
+		<link rel="apple-touch-icon" href="img/splash/sptouch-icon-iphone.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="img/splash/touch-icon-ipad.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="img/splash/touch-icon-iphone-retina.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="img/splash/touch-icon-ipad-retina.png">
+		
+		<!-- iOS web-app metas : hides Safari UI Components and Changes Status Bar Appearance -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		
+		<!-- Startup image for web apps -->
+		<link rel="apple-touch-startup-image" href="img/splash/ipad-landscape.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
+		<link rel="apple-touch-startup-image" href="img/splash/ipad-portrait.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
+		<link rel="apple-touch-startup-image" href="img/splash/iphone.png" media="screen and (max-device-width: 320px)">
+		
+		<style type="text/css">
+			.smart-form .btn {
+				float: right;
+				height: 31px;
+				/* margin: 10px 0 0 5px;*/
+				padding: 0 22px;
+				font: 300 15px/29px 'Open Sans',Helvetica,Arial,sans-serif;
+				cursor: pointer;
+			}		
+		</style>
+		
+	
+
+	</head>
+	
+	<!--
+
+	TABLE OF CONTENTS.
+	
+	Use search to find needed section.
+	
+	===================================================================
+	
+	|  01. #CSS Links                |  all CSS links and file paths  |
+	|  02. #FAVICONS                 |  Favicon links and file paths  |
+	|  03. #GOOGLE FONT              |  Google font link              |
+	|  04. #APP SCREEN / ICONS       |  app icons, screen backdrops   |
+	|  05. #BODY                     |  body tag                      |
+	|  06. #HEADER                   |  header tag                    |
+	|  07. #PROJECTS                 |  project lists                 |
+	|  08. #TOGGLE LAYOUT BUTTONS    |  layout buttons and actions    |
+	|  09. #MOBILE                   |  mobile view dropdown          |
+	|  10. #SEARCH                   |  search field                  |
+	|  11. #NAVIGATION               |  left panel & navigation       |
+	|  12. #RIGHT PANEL              |  right panel userlist          |
+	|  13. #MAIN PANEL               |  main panel                    |
+	|  14. #MAIN CONTENT             |  content holder                |
+	|  15. #PAGE FOOTER              |  page footer                   |
+	|  16. #SHORTCUT AREA            |  dropdown shortcuts area       |
+	|  17. #PLUGINS                  |  all scripts and plugins       |
+	
+	===================================================================
+	
+	-->
+	
+	<!-- #BODY -->
+	<!-- Possible Classes
+
+		* 'smart-style-{SKIN#}'
+		* 'smart-rtl'         - Switch theme mode to RTL
+		* 'menu-on-top'       - Switch to top navigation (no DOM change required)
+		* 'no-menu'			  - Hides the menu completely
+		* 'hidden-menu'       - Hides the main menu but still accessable by hovering over left edge
+		* 'fixed-header'      - Fixes the header
+		* 'fixed-navigation'  - Fixes the main menu
+		* 'fixed-ribbon'      - Fixes breadcrumb
+		* 'fixed-page-footer' - Fixes footer
+		* 'container'         - boxed layout mode (non-responsive: will not work with fixed-navigation & fixed-ribbon)
+	-->
+	<body class="">
+
+		<!-- HEADER -->
+		<header id="header">
+			<div id="logo-group">
+
+				<!-- PLACE YOUR LOGO HERE -->
+				<span id="logo"> <img src="img/logo.png" alt="SmartAdmin"> </span>
+				<!-- END LOGO PLACEHOLDER -->
+
+
+			</div>
+
+
+			<!-- pulled right: nav area -->
+			<div class="pull-right">
+				
+				<!-- collapse menu button -->
+				<div id="hide-menu" class="btn-header pull-right">
+					<span> <a href="javascript:void(0);" data-action="toggleMenu" title="Collapse Menu"><i class="fa fa-reorder"></i></a> </span>
+				</div>
+				<!-- end collapse menu -->
+				
+				<!-- #MOBILE -->
+				<!-- Top menu profile link : this shows only when top menu is active -->
+				<ul id="mobile-profile-img" class="header-dropdown-list hidden-xs padding-5">
+					<li class="">
+						<a href="#" class="dropdown-toggle no-margin userdropdown" data-toggle="dropdown"> 
+							<img src="img/avatars/sunny.png" alt="John Doe" class="online" />  
+						</a>
+						<ul class="dropdown-menu pull-right">
+							<li>
+								<a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0"><i class="fa fa-cog"></i> Setting</a>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<a href="profile.html" class="padding-10 padding-top-0 padding-bottom-0"> <i class="fa fa-user"></i> <u>P</u>rofile</a>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0" data-action="toggleShortcut"><i class="fa fa-arrow-down"></i> <u>S</u>hortcut</a>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0" data-action="launchFullscreen"><i class="fa fa-arrows-alt"></i> Full <u>S</u>creen</a>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<a href="login.html" class="padding-10 padding-top-5 padding-bottom-5" data-action="userLogout"><i class="fa fa-sign-out fa-lg"></i> <strong><u>L</u>ogout</strong></a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+
+				<!-- logout button -->
+				<div id="logout" class="btn-header transparent pull-right">
+					<span> <a href="login.html" title="Sign Out" data-action="userLogout" data-logout-msg="You can improve your security further after logging out by closing this opened browser"><i class="fa fa-sign-out"></i></a> </span>
+				</div>
+				<!-- end logout button -->
+
+	
+
+
+
+			</div>
+			<!-- end pulled right: nav area -->
+
+		</header>
+		<!-- END HEADER -->
+
+		<!-- Left panel : Navigation area -->
+		<!-- Note: This width of the aside area can be adjusted through LESS variables -->
+		<aside id="left-panel">
+
+			<!-- User info -->
+			<div class="login-info">
+				<span> <!-- User image size is adjusted inside CSS, it should stay as it --> 
+					
+					<a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
+						<img src="img/avatars/sunny.png" alt="me" class="online" /> 
+						<span>
+							john.doe 
+						</span>
+						<i class="fa fa-angle-down"></i>
+					</a> 
+					
+				</span>
+			</div>
+			<!-- end user info -->
+
+			<!-- NAVIGATION : This navigation is also responsive-->
+
+			<nav>
+				<!-- 
+				NOTE: Notice the gaps after each icon usage <i></i>..
+				Please note that these links work a bit different than
+				traditional href="" links. See documentation for details.
+				-->
+
+				<ul>
+					<li class="active">
+						<a href="#" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">AppPulse Negocio</span></a>
+						<ul>
+							<li class="">
+								<a href="fundex.html" title="Dashboard"><span class="menu-item-parent">FUNDEX</span></a>
+							</li>
+							<li class="">
+								<a href="nros_grales.html" title="Dashboard"><span class="menu-item-parent">Números Generales Semanal</span></a>
+							</li>
+							<li class="">
+								<a href="geolocalizacion.html" title="Dashboard"><span class="menu-item-parent">Geolocalización</span></a>
+							</li>
+							<li class="">
+								<a href="top_10.html" title="Dashboard"><span class="menu-item-parent">Top 10 países</span></a>
+							</li>
+							<li class="">
+								<a href="accesos_diarios.html" title="Dashboard"><span class="menu-item-parent">Accesos Diarios</span></a>
+							</li>
+							<li class="">
+								<a href="desempenho.html" title="Dashboard"><span class="menu-item-parent">Desempeño por dispositivo</span></a>
+							</li>
+							<li class="">
+								<a href="sesiones_pantalla.html" title="Dashboard"><span class="menu-item-parent">Sesiones por pantalla</span></a>
+							</li>
+							<li class="active">
+								<a href="analisis_consumo_recursos.html" title="Dashboard"><span class="menu-item-parent">Consumo de recursos</span></a>
+							</li>
+							<li class="">
+								<a href="analisis_estabilidad_acciones.html" title="Dashboard"><span class="menu-item-parent">Análisis Estabilidad/Por Acciones</span></a>
+							</li>							
+						</ul>	
+					</li>
+					
+					<li class="">
+						<a href="#" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">AppPulse Tecnología </span></a>
+						<ul>
+							<li class="">
+								<a href="fundex_tec.html" title="Dashboard"><span class="menu-item-parent">FUNDEX</span></a>
+							</li>
+							<li class="">
+								<a href="analisis_estabilidad_crashes.html" title="Dashboard"><span class="menu-item-parent">Análisis Estabilidad/Crashes</span></a>
+							</li>
+							<li class="">
+								<a href="analisis_estabilidad_acciones_tec.html" title="Dashboard"><span class="menu-item-parent">Análisis Estabilidad/Acciones</span></a>
+							</li>
+							<li class="">
+								<a href="analisis_consumo_recursos_tec.html" title="Dashboard"><span class="menu-item-parent">Análisis de recursos</span></a>
+							</li>
+
+						</ul>	
+					</li>						
+					
+				</ul>
+			</nav>		
+			
+
+			<span class="minifyme" data-action="minifyMenu"> 
+				<i class="fa fa-arrow-circle-left hit"></i> 
+			</span>
+
+		</aside>
+		<!-- END NAVIGATION -->
+
+		<!-- MAIN PANEL -->
+		<div id="main" role="main">
+
+			<!-- RIBBON -->
+			<div id="ribbon">
+
+				<span class="ribbon-button-alignment"> 
+					<span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh"  rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+						<i class="fa fa-refresh"></i>
+					</span> 
+				</span>
+
+				<!-- breadcrumb -->
+				<ol class="breadcrumb">
+					<li>Home</li><li>Dashboard</li>
+				</ol>
+				<!-- end breadcrumb -->
+
+				<!-- You can also add more buttons to the
+				ribbon for further usability
+
+				Example below:
+
+				<span class="ribbon-button-alignment pull-right">
+				<span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
+				<span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
+				<span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
+				</span> -->
+
+			</div>
+			<!-- END RIBBON -->
+
+			<!-- MAIN CONTENT -->
+			<div id="content">
+
+				<div class="row">
+					<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+						<h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-home"></i> Dashboard <span>> Consumo de Recursos</span></h1>
+					</div>
+
+				</div>
+				<!-- widget grid -->
+				<section id="widget-grid" class="">
+
+					<!-- row -->
+					<div class="row">
+
+						<!-- NEW WIDGET START -->
+						<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+							<!-- Widget ID (each widget will need unique ID)-->
+							<div class="jarviswidget" id="wid-id-2" data-widget-editbutton="false">
+								<!-- widget options:
+								usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+								data-widget-colorbutton="false"
+								data-widget-editbutton="false"
+								data-widget-togglebutton="false"
+								data-widget-deletebutton="false"
+								data-widget-fullscreenbutton="false"
+								data-widget-custombutton="false"
+								data-widget-collapsed="true"
+								data-widget-sortable="false"
+
+								-->
+								<header>
+									<span class="widget-icon"> <i class="fa fa-bar-chart-o"></i> </span>
+									<h2>PROMEDIO DE ACCESO DIARIOS DE USUARIOS</h2>
+
+								</header>
+
+								<!-- widget div-->
+								<div>
+
+									<!-- widget edit box -->
+									<div class="jarviswidget-editbox">
+										<!-- This area used as dropdown edit box -->
+
+									</div>
+									<!-- end widget edit box -->
+
+									<!-- widget content -->
+									
+									<div class="widget-body-toolbar bg-color-white">
+										<form id="form1" class="smart-form" role="form">
+											<div class="form-group">
+												<!--
+												<label class="sr-only" for="s123">Show From</label>
+												<input type="email" class="form-control input-sm" id="s123" placeholder="Show From">
+												-->
+											
+												<section class="col col-3">
+													<label class="input"> <i class="icon-append fa fa-calendar"></i>
+														<input type="text" name="startdate" id="startdate" placeholder="Fecha Inicio">
+													</label>
+												</section>															
+																		
+											</div>
+											<div class="form-group">
+												<section class="col col-3">
+													<label class="input"> <i class="icon-append fa fa-calendar"></i>
+														<input type="text" name="finishdate" id="finishdate" placeholder="Fecha Fin">
+													</label>
+												</section>
+											</div>
+											<div class="form-group">
+												<section class="col col-3">
+													<label class="select">
+														<select name="applicationID" id="applicationID">
+															<option value="0" selected="" disabled="">[App]</option>
+															<option value="-1">[Todas]</option>																		
+															<option value="867574fd34df4e97b2d34826597f4453">Santander Mobile Android</option>
+															<option value="2ac2d3f7d5f54969a55987908d5600cd">Santander SmartBank Android</option>
+															<option value="d56e9149845747158bd778736c096366">Santander SmartBank iOs</option>
+														</select> <i></i> </label>
+												</section>														
+											</div>
+
+											<div class="form-group">	
+												<section class="col col-2">
+													<button type="submit" class="btn btn-primary">
+														Actualizar
+													</button>
+												</section>
+											</div>
+
+										</form>
+
+									</div>
+									<div class="widget-body no-padding">
+										<br>
+										<h4 id="titulo"class="alert alert-info"> Titulo3 </h4>
+										<br>
+										<table id="dt_basic" ></table>
+										<div id="paginador"></div>										
+										<br>
+																				
+										
+										<h2 class="alert"><strong>Por tipo de conexión</strong></h2>
+										<div id="pie-chart" class="chart"></div>
+										<br>
+										<h2 class="alert"><strong>Uso Batería</strong></h2>
+										<div id="bar-bateria" class="chart"></div>
+										
+										<h2 class="alert"><strong>Uso Datos</strong></h2>
+										<div id="bar-datos" class="chart"></div>										
+										
+										
+										<br>
+									
+
+									</div>
+									<!-- end widget content -->
+
+								</div>
+								<!-- end widget div -->
+
+							</div>
+							<!-- end widget -->
+
+
+
+						</article>
+						<!-- WIDGET END -->
+
+					</div>
+
+					<!-- end row -->					
+
+				</section>
+				<!-- end widget grid -->
+
+			</div>
+			<!-- END MAIN CONTENT -->
+
+		</div>
+		<!-- END MAIN PANEL -->
+
+		<!-- PAGE FOOTER -->
+		<div class="page-footer">
+			<div class="row">
+				<div class="col-xs-12 col-sm-6">
+					<span class="txt-color-white">SmartAdmin 1.8.2 <span class="hidden-xs"> - Web Application Framework</span> © 2014-2015</span>
+				</div>
+			</div>
+		</div>
+		<!-- END PAGE FOOTER -->
+
+
+		<!--================================================== -->
+
+		<!-- PACE LOADER - turn this on if you want ajax loading to show (caution: uses lots of memory on iDevices)-->
+		<script data-pace-options='{ "restartOnRequestAfter": true }' src="js/plugin/pace/pace.min.js"></script>
+
+		<!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script>
+			if (!window.jQuery) {
+				document.write('<script src="js/libs/jquery-2.1.1.min.js"><\/script>');
+			}
+		</script>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+		<script>
+			if (!window.jQuery.ui) {
+				document.write('<script src="js/libs/jquery-ui-1.10.3.min.js"><\/script>');
+			}
+		</script>
+
+		<!-- IMPORTANT: APP CONFIG -->
+		<script src="js/app.config.js"></script>
+
+		<!-- JS TOUCH : include this plugin for mobile drag / drop touch events-->
+		<script src="js/plugin/jquery-touch/jquery.ui.touch-punch.min.js"></script> 
+
+		<!-- BOOTSTRAP JS -->
+		<script src="js/bootstrap/bootstrap.min.js"></script>
+
+		<!-- CUSTOM NOTIFICATION -->
+		<script src="js/notification/SmartNotification.min.js"></script>
+
+		<!-- JARVIS WIDGETS -->
+		<script src="js/smartwidgets/jarvis.widget.min.js"></script>
+
+		<!-- EASY PIE CHARTS -->
+		<script src="js/plugin/easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
+
+		<!-- SPARKLINES -->
+		<script src="js/plugin/sparkline/jquery.sparkline.min.js"></script>
+
+		<!-- JQUERY VALIDATE -->
+		<script src="js/plugin/jquery-validate/jquery.validate.min.js"></script>
+
+		<!-- JQUERY MASKED INPUT -->
+		<script src="js/plugin/masked-input/jquery.maskedinput.min.js"></script>
+
+		<!-- JQUERY SELECT2 INPUT -->
+		<script src="js/plugin/select2/select2.min.js"></script>
+
+		<!-- JQUERY UI + Bootstrap Slider -->
+		<script src="js/plugin/bootstrap-slider/bootstrap-slider.min.js"></script>
+
+		<!-- browser msie issue fix -->
+		<script src="js/plugin/msie-fix/jquery.mb.browser.min.js"></script>
+
+		<!-- FastClick: For mobile devices -->
+		<script src="js/plugin/fastclick/fastclick.min.js"></script>
+		
+		
+		<script src="js/plugin/jqgrid/jquery.jqGrid.min.js"></script>
+		<script src="js/plugin/jqgrid/grid.locale-en.min.js"></script>		
+
+		<!--[if IE 8]>
+
+		<h1>Your browser is out of date, please update your browser by going to www.microsoft.com/download</h1>
+
+		<![endif]-->
+
+
+
+		<!-- MAIN APP JS FILE -->
+		<script src="js/app.min.js"></script>
+
+		<!-- ENHANCEMENT PLUGINS : NOT A REQUIREMENT -->
+		<!-- Voice command : plugin -->
+		<script src="js/speech/voicecommand.min.js"></script>
+
+		<!-- SmartChat UI : plugin -->
+		<script src="js/smart-chat-ui/smart.chat.ui.min.js"></script>
+		<script src="js/smart-chat-ui/smart.chat.manager.min.js"></script>
+		<script src="js/smart-chat-ui/smart.chat.manager.min.js"></script>
+		
+		<!-- PAGE RELATED PLUGIN(S) -->
+		
+		<!-- Flot Chart Plugin: Flot Engine, Flot Resizer, Flot Tooltip -->
+		<script src="js/plugin/flot/jquery.flot.cust.min.js"></script>
+		<script src="js/plugin/flot/jquery.flot.resize.min.js"></script>
+		<script src="js/plugin/flot/jquery.flot.time.min.js"></script>
+		<script src="js/plugin/flot/jquery.flot.tooltip.min.js"></script>
+		<script src="js/plugin/flot/jquery.flot.fillbetween.min.js"></script>
+		<script src="js/plugin/flot/jquery.flot.orderBar.min.js"></script>
+		<script src="js/plugin/flot/jquery.flot.pie.min.js"></script>
+	    <script src="js/plugin/flot/jquery.flot.categories.min.js"></script>
+	
+		
+		
+		<!-- Vector Maps Plugin: Vectormap engine, Vectormap language -->
+		<script src="js/plugin/vectormap/jquery-jvectormap-1.2.2.min.js"></script>
+		<script src="js/plugin/vectormap/jquery-jvectormap-world-mill-en.js"></script>
+		
+		<!-- Full Calendar -->
+		<script src="js/plugin/moment/moment.min.js"></script>
+		<script src="js/plugin/fullcalendar/jquery.fullcalendar.min.js"></script>
+		
+		
+		<!-- PAGE RELATED PLUGIN(S) -->
+		<script src="js/plugin/datatables/jquery.dataTables.min.js"></script>
+		<script src="js/plugin/datatables/dataTables.colVis.min.js"></script>
+		<script src="js/plugin/datatables/dataTables.tableTools.min.js"></script>
+		<script src="js/plugin/datatables/dataTables.bootstrap.min.js"></script>
+		<script src="js/plugin/datatable-responsive/datatables.responsive.min.js"></script>
+
+
+		<script>
+		
+		
+			var $chrt_border_color = "#efefef";
+			var $chrt_grid_color = "#DDD"
+			var $chrt_main = "#E24913";
+			/* red       */
+			var $chrt_second = "#6595b4";
+			/* blue      */
+			var $chrt_third = "#FF9F01";
+			/* orange    */
+			var $chrt_fourth = "#7e9d3a";
+			/* green     */
+			var $chrt_fifth = "#BD362F";
+			/* dark red  */
+			var $chrt_mono = "#000";		
+		
+			$(document).ready(function() {
+
+				// DO NOT REMOVE : GLOBAL FUNCTIONS!
+
+
+					function hslToRgb(h, s, l){
+						var r, g, b;
+
+						if(s == 0){
+							r = g = b = l; // achromatic
+						}else{
+							function hue2rgb(p, q, t){
+								if(t < 0) t += 1;
+								if(t > 1) t -= 1;
+								if(t < 1/6) return p + (q - p) * 6 * t;
+								if(t < 1/2) return q;
+								if(t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+								return p;
+							}
+
+							var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+							var p = 2 * l - q;
+							r = hue2rgb(p, q, h + 1/3);
+							g = hue2rgb(p, q, h);
+							b = hue2rgb(p, q, h - 1/3);
+						}
+
+						return [Math.floor(r * 255), Math.floor(g * 255), Math.floor(b * 255)];
+					}
+
+					// convert a number to a color using hsl
+					function numberToColorHsl(i) {
+						// as the function expects a value between 0 and 1, and red = 0° and green = 120°
+						// we convert the input to the appropriate hue value
+						var hue = i * 1.2 / 360;
+						// we convert hsl to rgb (saturation 100%, lightness 50%)
+						var rgb = hslToRgb(hue, 1, .5);
+						// we format to css value and return
+						return 'rgb(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ')'; 
+					}
+
+					// convert a color to a number using hsl
+					// based on formula as provided by @KamilT
+					function numberToColorRgb(i,max) {
+						// we calculate red and green
+						var red = Math.floor(255 - (255 * i / 100));
+						var green = Math.floor(255 * i / 100);
+						// we format to css value and return
+						return 'rgb('+red+','+green+',0)'
+					}
+									
+										
+
+					$("#dt_basic").jqGrid({
+						colModel: [
+							{
+								label: 'Dominio',
+								name: 'domain',
+								width: 50//,
+								//formatter: formatTitle
+							},
+							{
+								label: 'Porcentaje',
+								name: 'porc',
+								width: 40,
+								align: 'center',
+								search: false,
+								sorttype:'float'
+								//formatter: formatColor
+							}
+						],
+
+						viewrecords: true, // show the current page, data rang and total records on the toolbar
+						//width: 780,
+						autowidth : true,
+						//height: 200,
+						height: 'auto',
+						rowNum: 100,
+						datatype: 'local',
+						//pgtext : "",
+						//pginput : false						
+						pager: "#paginador",
+						caption: "Accion Reconocida"
+					});					
+
+					
+					jQuery("#dt_basic").jqGrid('filterToolbar', { stringResult: true, searchOnEnter: false, defaultSearch: "cn" });
+
+					var max_averageHits = 0;
+					var max_avgAffectedUsersCrashes = 0;
+
+					function fetchGridData(startdate,finishdate,appID, appName) {
+						
+						var gridArrayData = [];
+						// show loading message
+						$("#dt_basic")[0].grid.beginReq();
+						$.ajax({
+							url: "apppulse_recursos_dominios.php?startdate=" + startdate + "&finishdate=" + finishdate + "&appID=" + appID,
+							success: function (result) {
+								//console.log("result:",result[0].data);
+								for (var i = 0; i < result[0].data.length; i++) {
+									var item = result[0].data[i];
+									//console.log("item:",item);
+									gridArrayData.push({
+										domain: item.domain,
+										porc: item.porc
+									});
+									/*
+									if(item.averageHits>=max_averageHits){
+										max_averageHits = item.averageHits; 
+									}
+									
+									if(item.avgAffectedUsersCrashes>=max_avgAffectedUsersCrashes){
+										max_avgAffectedUsersCrashes = item.avgAffectedUsersCrashes; 
+									}
+									*/									
+									
+								}
+								// set the new data
+								$("#dt_basic").jqGrid('setGridParam', { data: gridArrayData});
+								// hide the show message
+								$("#dt_basic")[0].grid.endReq();
+								// refresh the grid
+								$("#dt_basic").trigger('reloadGrid');
+							}
+						});
+					}					
+					
+					
+
+					function formatTitle(cellValue, options, rowObject) {
+						return cellValue.substring(0, 50) + "...";
+					};
+
+					function formatLink(cellValue, options, rowObject) {
+						return "<a href='" + cellValue + "'>" + cellValue.substring(0, 25) + "..." + "</a>";
+					};					
+
+
+					function formatColor(cellValue, options, rowObject) {
+						//console.log("---------",cellValue, options, rowObject);
+						//console.log("max_averageHits:",max_averageHits );
+						//return rowObject.averageHits;
+						var color = numberToColorRgb(rowObject.averageHits, max_averageHits);
+						return rowObject.averageHits +' <i class="fa fa-circle" style="font-size:20px;color:' + color + ';"></i>';
+						//return '<span class="cellWithoutBackground" style="background-color:' +  color + ';">' + rowObject.averageHits + '</span>';
+					};						
+
+					
+					function formatColor2(cellValue, options, rowObject) {
+						//console.log("---------",cellValue, options, rowObject);
+						//console.log("max_averageHits:",max_averageHits );
+						//return rowObject.averageHits;
+						var color = numberToColorRgb(max_avgAffectedUsersCrashes - rowObject.avgAffectedUsersCrashes,max_avgAffectedUsersCrashes);
+						return rowObject.avgAffectedUsersCrashes +' <i class="fa fa-circle" style="font-size:20px;color:' + color + ';"></i>';
+						//return '<span class="cellWithoutBackground" style="background-color:' +  color + ';">' + rowObject.avgAffectedUsersCrashes + '</span>';
+					};					
+					
+					
+					function formatBar(cellValue, options, rowObject) {
+						//console.log("---------",cellValue, options, rowObject);
+						//console.log("---------",rowObject.averageHits, rowObject.avgAffectedUsersCrashes );
+						//return "<a href='" + cellValue + "'>" + cellValue.substring(0, 25) + "..." + "</a>";
+						//return "<div class='bar-holder'><div class='progress'><div class='progress-bar bg-color-blue' data-transitiongoal='25'></div></div></div>";
+						//return "<div class='progress'><div class='progress-bar bg-color-teal' data-transitiongoal='25'></div></div>";
+						var maximo_hits = 500;
+						var hits_porc = (rowObject.averageHits/maximo_hits)*100;
+						var maximo_affected_users = 200;
+						var affected_users_porc = (rowObject.avgAffectedUsersCrashes/maximo_affected_users)*100;
+						return "<div class='bar-holder'><div class='progress'><div class='progress-bar bg-color-teal' data-transitiongoal='" + hits_porc +"' aria-valuenow='" + rowObject.averageHits +"' style='width: " + hits_porc +"%;'>" + rowObject.averageHits +"</div></div></div> " + 
+						       "<div class='bar-holder'><div class='progress'><div class='progress-bar bg-color-redLight' data-transitiongoal='" + affected_users_porc +"' aria-valuenow='" + rowObject.avgAffectedUsersCrashes +"' style='width: " + affected_users_porc +"%;'>" + rowObject.avgAffectedUsersCrashes +"</div></div></div>";
+					};	
+
+
+
+				
+
+			// START AND FINISH DATE
+			$('#startdate').datepicker({
+				dateFormat : 'yy-mm-dd',
+				prevText : '<i class="fa fa-chevron-left"></i>',
+				nextText : '<i class="fa fa-chevron-right"></i>',
+				onSelect : function(selectedDate) {
+					$('#finishdate').datepicker('option', 'minDate', selectedDate);
+				}
+			});
+			
+		
+			$('#finishdate').datepicker({
+				dateFormat : 'yy-mm-dd',
+				prevText : '<i class="fa fa-chevron-left"></i>',
+				nextText : '<i class="fa fa-chevron-right"></i>',
+				onSelect : function(selectedDate) {
+					$('#startdate').datepicker('option', 'maxDate', selectedDate);
+				}
+			});
+			
+		
+			$("#form1").submit(function( event ) {
+			event.preventDefault();
+			var startdate = $("input[name=startdate]").val();
+			var finishdate = $("input[name=finishdate]").val();
+			var appID = $("select[name=applicationID]").val();
+			var appName = $("#applicationID option:selected").text();
+			//console.log("app:", $("#applicationID option:selected").text());
+			
+			var series = [];
+	
+			
+			//http://jsfiddle.net/larsenmtl/zCuQ5/1/
+			
+			getPie(startdate, finishdate, appID, appName);
+			getBarsDispositivo(startdate, finishdate, "-1", appName);
+			fetchGridData(startdate, finishdate, appID, appName);
+			
+			});
+		
+			
+			var options = {
+				lines: {
+					show: true
+				},
+				points: {
+					show: true
+				},
+				xaxis: {
+					tickDecimals: 0,
+					tickSize: 1
+				}
+			};
+	
+			var series = []
+			var data = [];
+	
+			//$.plot("#statsChart", data, options);				
+	
+			var today = new Date();
+			var dd = today.getDate();
+			var mm = today.getMonth()+1; 
+			var yyyy = today.getFullYear();
+	
+			if(dd<10) 
+			{
+				dd='0'+dd;
+			} 
+	
+			if(mm<10) 
+			{
+				mm='0'+mm;
+			} 	
+	
+		
+			//today = mm+'/'+dd+'/'+yyyy;
+			hoy_str = yyyy+'-'+mm+'-'+dd;
+			//console.log("Hoy:",hoy_str);
+			
+			today.setDate(dd - 30);		
+			var dd_ayer = today.getDate();
+			var mm_ayer = today.getMonth()+1; 
+			var yyyy_ayer = today.getFullYear();			
+			if(dd_ayer<10) 
+			{
+				dd_ayer='0'+dd_ayer;
+			} 
+	
+			if(mm_ayer<10) 
+			{
+				mm_ayer='0'+mm_ayer;
+			} 
+	
+			ayer_str = yyyy_ayer+'-'+mm_ayer+'-'+dd_ayer;			
+			//console.log("Ayer:",ayer_str);
+			//console.log("Hoy:",hoy_str);
+	
+			getPie(ayer_str,hoy_str, 'd56e9149845747158bd778736c096366',"Santander SmartBank iOS");
+			getBarsDispositivo(ayer_str,hoy_str, '-1',"Santander SmartBank iOS");
+			fetchGridData(ayer_str,hoy_str, 'd56e9149845747158bd778736c096366',"Santander SmartBank iOS");
+
+			
+			/* bar chart */
+			
+			
+			function getPie(startdate,finishdate,appID, appName){
+				
+				$.ajax({
+					data: {"startdate" : startdate, "finishdate" :finishdate, "appID" : appID},
+					type: "GET",
+					dataType: "json",
+					url: "apppulse_recursos_conexion.php",
+				})
+				.done(function( data, textStatus, jqXHR ) {
+					console.log("PIECITO:",data[0].data);
+					var series = [];
+					var datitos = data[0].data;
+					for(i=0;i<datitos.length;i++){
+						//series.push(data[i].data);
+						//console.log(datitos[i]);
+						series.push({"data":datitos[i].value,"label":datitos[i].type});
+					}
+					//$("#titulo").text(appName);
+					//console.log("*******",series);
+					onDataReceivedPie(series);					 
+
+	
+				})
+				.fail(function( jqXHR, textStatus, errorThrown ) {
+					if ( console && console.log ) {
+						console.log( "La solicitud a fallado: " +  textStatus);
+					}
+				});
+	
+			}
+
+			function getBarsDispositivo(startdate,finishdate,appID, appName){
+				
+				$.ajax({
+					data: {"startdate" : startdate, "finishdate" :finishdate, "appID" : appID},
+					type: "GET",
+					dataType: "json",
+					url: "apppulse_recursos_datos_bateria.php",
+				})
+				.done(function( data, textStatus, jqXHR ) {
+					console.log(" +++++++++++++++++++ :",data);
+					if(data.length > 1){
+						var series = [];
+						for(i=0;i<data.length;i++){
+							//series.push(data[i].data);
+							series.push({"data":data[i].data,"label":data[i].label});
+						}
+						$("#titulo").text(appName);
+						onDataReceivedBarsDispositivo(series);					 
+					}
+					else{
+						$("#titulo").text(appName);
+						onDataReceivedBarsDispositivo([{"data":data[0].data,"label": appName}]);
+					}
+	
+				})
+				.fail(function( jqXHR, textStatus, errorThrown ) {
+					if ( console && console.log ) {
+						console.log( "La solicitud a fallado: " +  textStatus);
+					}
+				});
+	
+			}			
+
+			function onDataReceivedPie(series) {
+			
+				data = [ series ];
+				var datitos = [];
+				
+				//console.log("Series Pie:", series)
+				
+				arreglo_padre = []
+				for(i=0;i<series.length;i++){
+					console.log(">>>>>",series[i]);
+					arreglo_padre.push({"data":series[i].data,"label":series[i].label});
+				}
+				console.log("AP:",arreglo_padre);
+				
+				//console.log("d:",d);
+				//console.log("fundex:",fundexxx);
+
+				
+				/* pie chart */
+
+				if ($('#pie-chart').length) {
+
+					var data_pie = [];
+					var series = Math.floor(Math.random() * 10) + 1;
+					for (var i = 0; i < series; i++) {
+						data_pie[i] = {
+							label : "Series" + (i + 1),
+							data : Math.floor(Math.random() * 100) + 1
+						}
+					}
+
+					console.log("Pie:", data_pie);
+					$.plot($("#pie-chart"), arreglo_padre, {
+						series : {
+							pie : {
+								show : true,
+								innerRadius : 0.5,
+								radius : 1,
+								label : {
+									show : false,
+									radius : 2 / 3,
+									formatter : function(label, series) {
+										return '<div style="font-size:11px;text-align:center;padding:4px;color:white;">' + label + '<br/>' + Math.round(series.percent) + '%</div>';
+									},
+									threshold : 0.1
+								}
+							}
+						},
+						legend : {
+							show : true,
+							noColumns : 1, // number of colums in legend table
+							labelFormatter : null, // fn: string -> string
+							labelBoxBorderColor : "#000", // border color for the little label boxes
+							container : null, // container (as jQuery object) to put legend in, null means default on top of graph
+							position : "ne", // position of default legend container within plot
+							margin : [5, 10], // distance from grid edge to default legend container within plot
+							backgroundColor : "#efefef", // null means auto-detect
+							backgroundOpacity : 1 // set to 0 to avoid background
+						},
+						grid : {
+							hoverable : true,
+							clickable : true
+						},
+					});
+
+				}
+				
+			
+
+
+				
+			}				
+
+			function onDataReceivedBarsDispositivo(series) {
+			
+				data = [ series ];
+				var datitos = [];
+				
+				console.log("Series Bar Dispositivo:", series);
+				
+				arreglo_padre = []
+				for(i=0;i<series.length;i++){
+					var aux = series[i].data;
+					var dispositivo = [];
+					var battery = [];
+					var cellular = [];
+
+				
+					for(j=0;j<aux.length;j++){
+
+						//fundex.push([aux[j].timestamp,aux[j].fundex]);
+						battery.push([aux[j].timestamp,aux[j].batteryUsage]);
+						cellular.push([aux[j].timestamp,aux[j].cellularData]);
+						
+					}
+					arreglo_padre.push({"battery":battery, "cellular":cellular, "label":series[i].label});
+				}
+				
+				
+				console.log("+++++arreglo_padre:",arreglo_padre);
+				//console.log("fundex:",fundexxx);
+
+
+				$.plot("#bar-bateria", [{
+					data: arreglo_padre[0].battery,
+					label: "Santander Mobile Android - Batería",
+					bars: {
+							show: true,
+							barWidth: 0.2,
+							align: "right"
+						}
+					
+				},{
+					data: arreglo_padre[1].battery,
+					label: "Santander SmartBank Android - Batería",
+					bars: {
+							show: true,
+							barWidth: 0.2,
+							align: "center"
+						}
+					
+				},{
+					data: arreglo_padre[2].battery,
+					label: "Santander SmartBank iOS - Batería",
+					bars: {
+							show: true,
+							barWidth: 0.2,
+							align: "left"
+						}
+					
+				}], {
+					series: {
+						bars: {
+							show: true//,
+							//barWidth: 1.5,
+							//align: "center"
+						}
+					},
+					legend : true,
+					tooltip : true,
+					tooltipOpts : {
+						content : "<b>%s</b> : <span>%y Ah</span>",
+						dateFormat : "%d-%m-%y %H:%M",
+						defaultTheme : false
+					},
+					xaxis: {
+						mode: "categories",
+						tickLength: 0
+					},
+					grid: { hoverable: true, clickable: true }
+				});
+
+				
+				
+				$.plot("#bar-datos", [{
+					data: arreglo_padre[0].cellular,
+					label: "Santander Mobile Android - Datos",
+					bars: {
+							show: true,
+							barWidth: 0.2,
+							align: "right"
+						}
+					
+				},{
+					data: arreglo_padre[1].cellular,
+					label: "Santander SmartBank Android - Datos",
+					bars: {
+							show: true,
+							barWidth: 0.2,
+							align: "center"
+						}
+					
+				},{
+					data: arreglo_padre[2].cellular,
+					label: "Santander SmartBank iOS - Datos",
+					bars: {
+							show: true,
+							barWidth: 0.2,
+							align: "left"
+						}
+					
+				}], {
+					series: {
+						bars: {
+							show: true//,
+							//barWidth: 1.5,
+							//align: "center"
+						}
+					},
+					legend : true,
+					tooltip : true,
+					tooltipOpts : {
+						content : "<b>%s</b> : <span>%y Bytes</span>",
+						dateFormat : "%d-%m-%y %H:%M",
+						defaultTheme : false
+					},
+					xaxis: {
+						mode: "categories",
+						tickLength: 0
+					},
+					grid: { hoverable: true, clickable: true }
+				});				
+				
+
+				
+			}			
+			
+			
+			/* end bar chart */
+		
+		})		
+		
+		</script>
+	</body>
+
+</html>
