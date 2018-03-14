@@ -100,7 +100,7 @@ include("inc/header.php");
 				<div class="well no-padding">
 					<form action="<?php echo APP_URL."/login.php"; ?>" id="login-form" class="smart-form client-form">
 						<header>
-							Bienvenido
+							Autenticación
 						</header>
 
 						<fieldset>
