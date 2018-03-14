@@ -100,7 +100,7 @@ include("inc/header.php");
 				<div class="well no-padding">
 					<form action="<?php echo APP_URL."/login.php"; ?>" id="login-form" class="smart-form client-form">
 						<header>
-							Autenticación
+							Bienvenido
 						</header>
 
 						<fieldset>
@@ -113,7 +113,7 @@ include("inc/header.php");
 							</section>
 
 							<section>
-								<label class="label ">Contrase&ntilde;a</label>
+								<label class="label ">Password</label>
 								<label class="input"> <i class="icon-append fa fa-lock"></i>
 									<input type="password" name="password">
 									<b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i> Enter your password</b> </label>
@@ -136,7 +136,7 @@ include("inc/header.php");
 						</fieldset>
 						<footer>
 							<button type="submit" class="btn btn-primary">
-								Acceder
+								Login
 							</button>
 						</footer>
 					</form>
